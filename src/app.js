@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 
 const app = express();
 
+//CORS=>Cross Origin Resource Sharing
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials: true
