@@ -50,12 +50,12 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.pre("save", async function (next) { 
-  if (!this.isModified("password")) return next();
+  if (!this.isModified("password")) return next(); // Password encription using bcrypt.
   this.password = bcrypt.hash(this.password, 10);
   next();
 });
 
-userSchema.methods.isPasswordCorrect = async function(password){
+userSchema.methods.isPasswordCorrect = async function(password){ // Password decryption using bcrypt.
  return await bcrypt.compare(password,this.password)
 }
 
